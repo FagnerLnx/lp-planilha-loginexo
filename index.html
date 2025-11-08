@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K84JSJVM');</script>
-<!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K84JSJVM');</script>
+    <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,14 +16,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Seu CSS (sem alterações) */
         :root{--azul-principal:#214e86;--azul-escuro:#1a233a;--verde-destaque:#00c48c;--cinza-claro:#f5f5f5;--branco:#fff;--texto-cor:#3c424c}
         body{font-family:'Poppins',sans-serif;margin:0;padding:0;background-color:var(--branco);color:var(--texto-cor);line-height:1.6; scroll-behavior: smooth;}
         .container{max-width:1100px;margin:0 auto;padding:20px}
         section{padding:80px 20px; text-align: center;}
         h2{font-size:2.5em;font-weight:700;color:var(--azul-escuro);margin-bottom:20px;line-height: 1.3;}
         h3{font-size:1.3em;color:var(--azul-escuro);margin-top:15px}
-
-        /* --- HERO SECTION --- */
         #hero{background-color:var(--azul-escuro);color:var(--branco);padding: 60px 20px 100px 20px; text-align: left; border-bottom-left-radius: 50% 10%; border-bottom-right-radius: 50% 10%;}
         .hero-container{display:flex;align-items:center;justify-content:space-between;gap:50px}
         .hero-content{flex-basis:55%}
@@ -40,45 +39,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .form-submit-btn:hover{transform: translateY(-3px); box-shadow:0 6px 20px rgba(0,196,140,.6);}
         .form-disclaimer{font-size: .8em; color: #777; text-align: center; margin-top: 15px;}
         .hero-mockup{max-width:50%; margin-top:-120px; position:relative; z-index:10; filter:drop-shadow(0 10px 30px rgba(0,0,0,.15)); margin-left: auto; margin-right: auto; display: block;}
-
-        /* --- PAIN MIRROR SECTION --- */
         #pain-mirror{background-color:var(--cinza-claro)}
         #pain-mirror h2 span{font-size: 0.7em; display: block; font-weight: 400; color: var(--texto-cor); margin-top: 10px;}
         .pain-points{max-width:800px;margin:50px auto 0 auto;text-align:left;display:flex;flex-direction:column;gap:20px}
         .pain-point{display:flex;align-items:center;gap:15px;background-color:var(--branco);padding:20px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.05)}
         .pain-point .icon{font-size:1.5em}
         .pain-point p{margin:0;font-size:1.1em;font-weight:600;color:var(--azul-principal)}
-        
-        /* --- SOLUTION BRIDGE SECTION --- */
         .how-it-works{display:flex;justify-content:center;gap:30px;margin-top:60px;flex-wrap:wrap}
         .step{background:var(--cinza-claro);padding:30px;border-radius:15px;flex-basis:280px}
         .step .step-number{background-color:var(--verde-destaque);color:var(--branco);width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:1.5em;font-weight:700;margin:0 auto 20px auto}
-        
-        /* --- TRANSFORMATION GALLERY SECTION --- */
         #transformation{background-color:var(--azul-principal);color:var(--branco)}
         #transformation h2{color: var(--branco);}
         .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:900px;margin:60px auto 0 auto}
         .benefit-card{background:rgba(255,255,255,.1);padding:30px;border-radius:15px;backdrop-filter:blur(10px)}
         .benefit-card .icon{font-size:3em;color:var(--verde-destaque)}
-
-        /* --- AUTHORITY SECTION --- */
         .authority-box{max-width:800px;margin:40px auto;background:var(--cinza-claro);padding:40px;border-radius:20px;display:flex;align-items:center;gap:30px;text-align:left}
         .authority-box img.profile-pic{width:150px;height:150px;border-radius:50%; object-fit: cover;}
         .authority-box img.logo-usp{max-width: 120px; margin-top: 10px;}
         .authority-text p{margin:0 0 10px 0}
         .authority-text p strong{color:var(--azul-escuro)}
-
-        /* --- FINAL INVITATION SECTION --- */
         #final-invitation {padding-bottom: 80px;}
         #final-invitation .form-container {margin: 40px auto 0 auto;}
-
-        /* --- FOOTER --- */
         footer{background-color:var(--azul-escuro);color:var(--cinza-claro);padding:20px;font-size:.9em;text-align:center}
-        
-        /* --- MENSAGENS DO FORM --- */
         .thank-you-message,.loading{display:none;}
-        
-        /* RESPONSIVIDADE */
         @media (max-width:900px){
             .hero-container{flex-direction:column;text-align:center}
             .hero-content{text-align:center}
@@ -97,14 +80,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84JSJVM"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84JSJVM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-<form name="capture-form" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-</form>
+    <!-- ========================================================== -->
+    <!-- CORREÇÃO 1: Formulário Oculto Adicionado -->
+    <!-- ========================================================== -->
+    <form name="capture-form" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+    </form>
 
     <!-- SEÇÃO 1: O PRIMEIRO IMPACTO (A DOBRA MÁGICA) -->
     <header id="hero">
@@ -115,8 +101,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="form-container" id="form-hero">
                 <h3>COMECE A LUCRAR AGORA!</h3>
-                <form name="capture-form" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
-                    <input type="hidden" name="form-name" value="capture-form">
+                <!-- ========================================================== -->
+                <!-- CORREÇÃO 2: Formulário Visível Simplificado -->
+                <!-- ========================================================== -->
+                <form method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
                     <div class="form-group">
                         <label for="name-hero">Seu Nome</label>
                         <input type="text" id="name-hero" name="name" required placeholder="Ex: Ana Criadora">
@@ -133,7 +121,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </header>
 
     <div class="container">
-        <!-- IMAGEM SUGERIDA: Mockup limpo e profissional da sua planilha em um laptop, com gráficos de lucro subindo. -->
         <img src="mockup-planilha.png" alt="Mockup da Calculadora de Preço Inteligente da LogiNexo" class="hero-mockup">
     </div>
 
@@ -155,7 +142,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <h2>A clareza financeira que você precisa, simplificada.</h2>
             <p style="max-width: 700px; margin: 0 auto; font-size: 1.1em;">A Planilha "Calculadora de Preço Inteligente" é a ferramenta que traduz o "financês" para a sua realidade. Sem jargões, sem fórmulas complexas. Apenas respostas.</p>
-            <!-- IMAGEM SUGERIDA: Um GIF animado mostrando a planilha em ação. O usuário preenche um campo, e o preço final muda "magicamente". -->
             <div class="how-it-works">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -205,12 +191,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <h2>Criado por quem entende de negócios e da sua realidade</h2>
             <div class="authority-box">
-                <!-- IMAGEM SUGERIDA: Sua foto profissional, porém amigável e acessível. -->
                 <img src="Foto Perfil.png" alt="Fagner Oliveira" class="profile-pic">
                 <div class="authority-text">
                     <p>Olá! Sou <strong>Fagner Oliveira</strong>, fundador da LogiNexo. Durante meu <strong>MBA em Gestão de Negócios na USP/ESALQ</strong>, percebi que as ferramentas mais poderosas do mercado eram complexas demais para quem realmente constrói a economia: você, o microempreendedor.</p>
                     <p>Criei esta planilha como o primeiro passo para cumprir minha missão: entregar gestão poderosa, sem complicação, para que seu talento criativo tenha a base sólida que merece.</p>
-                    <!-- IMAGEM SUGERIDA: Logo da USP/ESALQ. Isso gera autoridade instantânea. -->
                     <img src="logo-usp.png" alt="MBA USP/ESALQ" class="logo-usp">
                 </div>
             </div>
@@ -223,8 +207,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h2>Troque o "achismo" pela certeza. O primeiro passo é grátis.</h2>
             <div class="form-container" id="form-final">
                  <h3>BAIXE SUA PLANILHA AGORA!</h3>
-                 <form name="capture-form-final" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
-                     <input type="hidden" name="form-name" value="capture-form">
+                 <!-- ========================================================== -->
+                 <!-- CORREÇÃO 2.1: Formulário Visível do rodapé simplificado -->
+                 <!-- ========================================================== -->
+                 <form method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
                      <div class="form-group">
                          <label for="name-final">Seu Nome</label>
                          <input type="text" id="name-final" name="name" required>
@@ -246,26 +232,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </footer>
 
+    <!-- ========================================================== -->
+    <!-- CORREÇÃO 3: Bloco de Script simplificado -->
+    <!-- ========================================================== -->
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const forms = document.querySelectorAll('.capture-form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            // Apenas verifica se o formulário é válido antes de disparar o evento.
-            if (form.checkValidity()) {
-                // Dispara o evento para o Google Tag Manager
-                window.dataLayer = window.dataLayer || [];
-                // NOME DO EVENTO CORRIGIDO PARA BATER COM O GTM
-                window.dataLayer.push({'event': 'generate_lead'}); 
+    document.addEventListener('DOMContentLoaded', function() {
+        const forms = document.querySelectorAll('.capture-form');
+        
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                if (form.checkValidity()) {
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({'event': 'generate_lead'}); 
 
-                const submitButton = form.querySelector('.form-submit-btn');
-                submitButton.innerHTML = "Processando...";
-                submitButton.disabled = true;
-            }
+                    const submitButton = form.querySelector('.form-submit-btn');
+                    if (submitButton) {
+                        submitButton.innerHTML = "Processando...";
+                        submitButton.disabled = true;
+                    }
+                }
+            });
         });
     });
-});
-</script>
+    </script>
 </body>
 </html>
