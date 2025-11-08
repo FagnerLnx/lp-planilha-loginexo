@@ -1,0 +1,22 @@
+# netlify.toml
+# Arquivo de configuração para o site da Planilha LogiNexo
+
+[build]
+  # Nenhuma configuração de build necessária para sites estáticos
+
+[build.processing]
+  skip_processing = true
+
+[build.processing.css]
+  bundle = false
+  minify = false
+
+[build.processing.js]
+  bundle = false
+  minify = false
+
+[build.processing.html]
+  pretty_urls = false # <<< A CORREÇÃO ESTÁ AQUI
+
+[build.processing.images]
+  compress = false
