@@ -101,6 +101,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<form name="capture-form" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+</form>
+
     <!-- SEÇÃO 1: O PRIMEIRO IMPACTO (A DOBRA MÁGICA) -->
     <header id="hero">
         <div class="container hero-container">
@@ -242,54 +247,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
 
     <script>
-    // Este script agora lida com os formulários. Ele funciona com a configuração Netlify que você já tinha.
-    document.addEventListener('DOMContentLoaded', function() {
-        const forms = document.querySelectorAll('.capture-form');
-        
-        forms.forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('.capture-form');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            // Apenas verifica se o formulário é válido antes de disparar o evento.
+            if (form.checkValidity()) {
+                // Dispara o evento para o Google Tag Manager
+                window.dataLayer = window.dataLayer || [];
+                // NOME DO EVENTO CORRIGIDO PARA BATER COM O GTM
+                window.dataLayer.push({'event': 'generate_lead'}); 
+
                 const submitButton = form.querySelector('.form-submit-btn');
-                const originalButtonText = submitButton.innerHTML;
                 submitButton.innerHTML = "Processando...";
                 submitButton.disabled = true;
-
-                const formData = new FormData(form);
-                
-                fetch('/', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Dispara evento para o Google Tag Manager
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({'event': 'form_submission_success'});
-
-                        // Redireciona para a página de obrigado
-                        window.location.href = form.getAttribute('action');
-                        
-                        // Mensagem de agradecimento (fallback caso o redirect falhe)
-                        const formContainer = form.parentElement;
-                        form.style.display = 'none';
-                        const thankYou = formContainer.querySelector('.thank-you-message');
-                        if (thankYou) thankYou.style.display = 'block';
-
-                    } else {
-                        throw new Error('Falha no envio do formulário.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    alert('Ocorreu um erro. Por favor, tente novamente.');
-                    submitButton.innerHTML = originalButtonText;
-                    submitButton.disabled = false;
-                });
-            });
+            }
         });
     });
-    </script>
+});
+</script>
 </body>
 </html>
