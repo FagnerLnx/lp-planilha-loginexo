@@ -16,7 +16,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Seu CSS (sem alterações) */
         :root{--azul-principal:#214e86;--azul-escuro:#1a233a;--verde-destaque:#00c48c;--cinza-claro:#f5f5f5;--branco:#fff;--texto-cor:#3c424c}
         body{font-family:'Poppins',sans-serif;margin:0;padding:0;background-color:var(--branco);color:var(--texto-cor);line-height:1.6; scroll-behavior: smooth;}
         .container{max-width:1100px;margin:0 auto;padding:20px}
@@ -84,9 +83,7 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- ========================================================== -->
-    <!-- CORREÇÃO 1: Formulário Oculto Adicionado -->
-    <!-- ========================================================== -->
+    <!-- Formulário Oculto para Detecção de Campos pelo Netlify -->
     <form name="capture-form" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="email" name="email" />
@@ -101,10 +98,8 @@
             </div>
             <div class="form-container" id="form-hero">
                 <h3>COMECE A LUCRAR AGORA!</h3>
-                <!-- ========================================================== -->
-                <!-- CORREÇÃO 2: Formulário Visível Simplificado -->
-                <!-- ========================================================== -->
                 <form name="capture-form" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
+                    <input type="hidden" name="form-name" value="capture-form" />
                     <div class="form-group">
                         <label for="name-hero">Seu Nome</label>
                         <input type="text" id="name-hero" name="name" required placeholder="Ex: Ana Criadora">
@@ -207,10 +202,8 @@
             <h2>Troque o "achismo" pela certeza. O primeiro passo é grátis.</h2>
             <div class="form-container" id="form-final">
                  <h3>BAIXE SUA PLANILHA AGORA!</h3>
-                 <!-- ========================================================== -->
-                 <!-- CORREÇÃO 2.1: Formulário Visível do rodapé simplificado -->
-                 <!-- ========================================================== -->
-                 <form name="capture-form" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html"></form>
+                 <form name="capture-form-final" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
+                     <input type="hidden" name="form-name" value="capture-form-final" />
                      <div class="form-group">
                          <label for="name-final">Seu Nome</label>
                          <input type="text" id="name-final" name="name" required>
@@ -232,12 +225,9 @@
         </div>
     </footer>
 
-    <!-- ========================================================== -->
-    <!-- CORREÇÃO 3: Bloco de Script simplificado -->
-    <!-- ========================================================== -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const forms = document.querySelectorAll('.capture-form');
+        const forms = document.querySelectorAll('form[data-netlify="true"].capture-form');
         
         forms.forEach(form => {
             form.addEventListener('submit', function(e) {
