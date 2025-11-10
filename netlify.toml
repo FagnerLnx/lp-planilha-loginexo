@@ -1,13 +1,10 @@
-# netlify.toml
-# Arquivo de configuração para o site da Planilha LogiNexo
-
+# netlify.toml - Configuração Corrigida
 [build]
-  # Nenhuma configuração de build necessária para sites estáticos
+  publish = "."
 
-# Esta seção desativa o processamento automático de assets pela Netlify.
-# É a melhor prática para sites estáticos simples, pois evita comportamentos inesperados.
+# Configurações de processamento
 [build.processing]
-  skip_processing = true
+  skip_processing = false
 
 [build.processing.css]
   bundle = false
@@ -18,9 +15,13 @@
   minify = false
 
 [build.processing.html]
-  # Desativa as "Pretty URLs", o que resolve conflitos de redirecionamento.
-  # Agora, o action="/obrigado.html" funcionará exatamente como esperado.
   pretty_urls = false
 
 [build.processing.images]
   compress = false
+
+# Configurações específicas para formulários
+[[redirects]]
+  from = "/obrigado.html"
+  to = "/obrigado.html"
+  status = 200

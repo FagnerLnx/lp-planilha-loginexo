@@ -101,12 +101,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Formulário Oculto para Detecção de Campos pelo Netlify -->
-    <form name="capture-form" data-netlify="true" netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-    </form>
-
     <!-- SEÇÃO 1: O PRIMEIRO IMPACTO (A DOBRA MÁGICA) -->
     <header id="hero">
         <div class="container hero-container">
@@ -116,8 +110,8 @@
             </div>
             <div class="form-container" id="form-hero">
                 <h3>COMECE A LUCRAR AGORA!</h3>
-                <form name="capture-form" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
-                    <input type="hidden" name="form-name" value="capture-form" />
+                <form name="lead-form-hero" method="POST" netlify data-netlify="true" action="/obrigado.html">
+                    <input type="hidden" name="form-name" value="lead-form-hero" />
                     <div class="form-group">
                         <label for="name-hero">Seu Nome</label>
                         <input type="text" id="name-hero" name="name" required placeholder="Ex: Ana Criadora">
@@ -220,19 +214,18 @@
             <h2>Troque o "achismo" pela certeza. O primeiro passo é grátis.</h2>
             <div class="form-container" id="form-final">
                  <h3>BAIXE SUA PLANILHA AGORA!</h3>
-                 <form name="capture-form-final" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
-                     <input type="hidden" name="form-name" value="capture-form-final" />
+                 <form name="lead-form-final" method="POST" netlify data-netlify="true" action="/obrigado.html">
+                     <input type="hidden" name="form-name" value="lead-form-final" />
                      <div class="form-group">
                          <label for="name-final">Seu Nome</label>
-                         <input type="text" id="name-final" name="name" required>
+                         <input type="text" id="name-final" name="name" required placeholder="Seu nome completo">
                      </div>
                      <div class="form-group">
                          <label for="email-final">Seu Melhor Email</label>
-                         <input type="email" id="email-final" name="email" required>
+                         <input type="email" id="email-final" name="email" required placeholder="seu@email.com">
                      </div>
                      <button type="submit" class="form-submit-btn">QUERO MINHA CLAREZA FINANCEIRA!</button>
                  </form>
-                 <div class="thank-you-message"><h3>🎉 Perfeito! Sua planilha está a caminho do seu e-mail.</h3></div>
             </div>
         </div>
     </section>
@@ -243,58 +236,25 @@
         </div>
     </footer>
 
-    <!-- SCRIPT FINAL E CORRIGIDO -->
+    <!-- SCRIPT SIMPLIFICADO E CORRIGIDO -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const forms = document.querySelectorAll('form[data-netlify="true"]');
 
         forms.forEach(form => {
             form.addEventListener('submit', function(e) {
-                // Impede o envio padrão para tomarmos controle
-                e.preventDefault();
-
-                // Verifica a validação do HTML5
-                if (!form.checkValidity()) {
-                    e.stopPropagation();
-                    // O próprio navegador mostrará os avisos de campos obrigatórios
-                    return;
-                }
-
+                // Mostra loading no botão
                 const submitButton = form.querySelector('button[type="submit"]');
-                const originalButtonText = submitButton.innerHTML;
-                submitButton.innerHTML = "Processando...";
+                const originalText = submitButton.textContent;
+                submitButton.textContent = "Enviando...";
                 submitButton.disabled = true;
 
-                const formData = new FormData(form);
-
-                // Envia os dados para o endpoint que a Netlify cria na página atual.
-                fetch('/', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Apenas em caso de sucesso no envio para a Netlify...
-                        // 1. Dispara o evento para o GTM.
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({'event': 'generate_lead'});
-                        
-                        // 2. Redireciona o usuário para a página de obrigado.
-                        window.location.href = form.getAttribute('action');
-                    } else {
-                        // Se a Netlify retornar um erro (ex: 404), ele será capturado aqui.
-                        throw new Error('Falha no envio para o servidor Netlify.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro detalhado no envio do formulário:', error);
-                    alert('Ocorreu um erro. Por favor, tente novamente.');
-                    
-                    // Restaura o botão em caso de erro
-                    submitButton.innerHTML = originalButtonText;
-                    submitButton.disabled = false;
-                });
+                // Dispara evento do GTM
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({'event': 'generate_lead'});
+                
+                // Continua com o envio normal do formulário
+                // O Netlify processará automaticamente e redirecionará
             });
         });
     });
