@@ -1,39 +1,303 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- ... (seu head permanece o mesmo) ... -->
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K84JSJVM');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Preço Inteligente - Conquiste seu Lucro Real</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root{--azul-principal:#214e86;--azul-escuro:#1a233a;--verde-destaque:#00c48c;--cinza-claro:#f5f5f5;--branco:#fff;--texto-cor:#3c424c}
+        body{font-family:'Poppins',sans-serif;margin:0;padding:0;background-color:var(--branco);color:var(--texto-cor);line-height:1.6; scroll-behavior: smooth;}
+        .container{max-width:1100px;margin:0 auto;padding:20px}
+        section{padding:80px 20px; text-align: center;}
+        h2{font-size:2.5em;font-weight:700;color:var(--azul-escuro);margin-bottom:20px;line-height: 1.3;}
+        h3{font-size:1.3em;color:var(--azul-escuro);margin-top:15px}
+
+        /* --- HERO SECTION --- */
+        #hero{background-color:var(--azul-escuro);color:var(--branco);padding: 60px 20px 100px 20px; text-align: left; border-bottom-left-radius: 50% 10%; border-bottom-right-radius: 50% 10%;}
+        .hero-container{display:flex;align-items:center;justify-content:space-between;gap:50px}
+        .hero-content{flex-basis:55%}
+        .hero-content h1{font-size:3em;font-weight:900;margin:0 0 15px 0;line-height:1.2}
+        .hero-content h1 span{color:var(--verde-destaque);display:block}
+        .hero-content p{font-size:1.2em;max-width:500px;margin-bottom:20px}
+        .form-container{flex-basis:40%;max-width:450px;background:var(--branco);padding:30px;border-radius:20px;color:var(--texto-cor);box-shadow:0 10px 35px rgba(0,0,0,.2)}
+        .form-container h3{margin-top:0;text-align:center;color:var(--azul-principal)}
+        .form-group{margin-bottom:15px;text-align:left}
+        .form-group label{display:block;margin-bottom:5px;font-weight:600;font-size: 0.9em;}
+        .form-group input{width:100%;padding:12px;border:2px solid #ddd;border-radius:8px;font-size:1em;font-family:'Poppins',sans-serif;box-sizing:border-box}
+        .form-group input:focus{border-color:var(--verde-destaque);outline:none}
+        .form-submit-btn{width:100%;padding:15px;background-color:var(--verde-destaque);color:#fff;border:none;border-radius:50px;font-size:1.2em;font-weight:700;cursor:pointer;transition:transform .2s, box-shadow .2s; box-shadow:0 4px 15px rgba(0,196,140,.4)}
+        .form-submit-btn:hover{transform: translateY(-3px); box-shadow:0 6px 20px rgba(0,196,140,.6);}
+        .form-disclaimer{font-size: .8em; color: #777; text-align: center; margin-top: 15px;}
+        .hero-mockup{max-width:50%; margin-top:-120px; position:relative; z-index:10; filter:drop-shadow(0 10px 30px rgba(0,0,0,.15)); margin-left: auto; margin-right: auto; display: block;}
+
+        /* --- PAIN MIRROR SECTION --- */
+        #pain-mirror{background-color:var(--cinza-claro)}
+        #pain-mirror h2 span{font-size: 0.7em; display: block; font-weight: 400; color: var(--texto-cor); margin-top: 10px;}
+        .pain-points{max-width:800px;margin:50px auto 0 auto;text-align:left;display:flex;flex-direction:column;gap:20px}
+        .pain-point{display:flex;align-items:center;gap:15px;background-color:var(--branco);padding:20px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.05)}
+        .pain-point .icon{font-size:1.5em}
+        .pain-point p{margin:0;font-size:1.1em;font-weight:600;color:var(--azul-principal)}
+        
+        /* --- SOLUTION BRIDGE SECTION --- */
+        .how-it-works{display:flex;justify-content:center;gap:30px;margin-top:60px;flex-wrap:wrap}
+        .step{background:var(--cinza-claro);padding:30px;border-radius:15px;flex-basis:280px}
+        .step .step-number{background-color:var(--verde-destaque);color:var(--branco);width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:1.5em;font-weight:700;margin:0 auto 20px auto}
+        
+        /* --- TRANSFORMATION GALLERY SECTION --- */
+        #transformation{background-color:var(--azul-principal);color:var(--branco)}
+        #transformation h2{color: var(--branco);}
+        .benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:900px;margin:60px auto 0 auto}
+        .benefit-card{background:rgba(255,255,255,.1);padding:30px;border-radius:15px;backdrop-filter:blur(10px)}
+        .benefit-card .icon{font-size:3em;color:var(--verde-destaque)}
+
+        /* --- AUTHORITY SECTION --- */
+        .authority-box{max-width:800px;margin:40px auto;background:var(--cinza-claro);padding:40px;border-radius:20px;display:flex;align-items:center;gap:30px;text-align:left}
+        .authority-box img.profile-pic{width:150px;height:150px;border-radius:50%; object-fit: cover;}
+        .authority-box img.logo-usp{max-width: 120px; margin-top: 10px;}
+        .authority-text p{margin:0 0 10px 0}
+        .authority-text p strong{color:var(--azul-escuro)}
+
+        /* --- FINAL INVITATION SECTION --- */
+        #final-invitation {padding-bottom: 80px;}
+        #final-invitation .form-container {margin: 40px auto 0 auto;}
+
+        /* --- FOOTER --- */
+        footer{background-color:var(--azul-escuro);color:var(--cinza-claro);padding:20px;font-size:.9em;text-align:center}
+        
+        /* --- MENSAGENS DO FORM --- */
+        .thank-you-message,.loading{display:none;}
+        
+        /* RESPONSIVIDADE */
+        @media (max-width:900px){
+            .hero-container{flex-direction:column;text-align:center}
+            .hero-content{text-align:center}
+            .hero-content p{margin-left:auto;margin-right:auto}
+            .form-container{margin-top:40px}
+            .hero-mockup{margin-top: 40px;}
+            .authority-box{flex-direction:column;text-align:center}
+        }
+        @media (max-width:768px){
+            h2{font-size: 2em;}
+            .hero-content h1{font-size:2.5em}
+            .form-container{padding:25px}
+            .pain-point p{font-size: 1em;}
+        }
+    </style>
 </head>
 <body>
-    <!-- ... (GTM noscript) ... -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K84JSJVM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-    <!-- Formulário Oculto foi removido para evitar qualquer conflito -->
+    <!-- Formulário Oculto para Detecção de Campos pelo Netlify -->
+    <form name="capture-form" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+    </form>
 
-    <!-- ... (Conteúdo da página) ... -->
-    
-    <div class="form-container" id="form-hero">
-        <h3>COMECE A LUCRAR AGORA!</h3>
-        <!-- ========================================================== -->
-        <!-- VERSÃO FINALÍSSIMA DO FORMULÁRIO -->
-        <!-- ========================================================== -->
-        <form name="capture-form" method="POST" data-netlify="true" class="capture-form">
-            <p hidden><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
-            <div class="form-group">
-                <label for="name-hero">Seu Nome</label>
-                <input type="text" id="name-hero" name="name" required placeholder="Ex: Ana Criadora">
+    <!-- SEÇÃO 1: O PRIMEIRO IMPACTO (A DOBRA MÁGICA) -->
+    <header id="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Descubra o Preço Lucrativo do seu Produto <span>em 7 minutos, mesmo que você odeie números.</span></h1>
+                <p>A Planilha gratuita que te dá a clareza de um CEO para precificar com confiança, proteger seu lucro e parar de "pagar para trabalhar".</p>
             </div>
-            <div class="form-group">
-                <label for="email-hero">Seu Melhor Email</label>
-                <input type="email" id="email-hero" name="email" required placeholder="Ex: ana.criadora@email.com">
+            <div class="form-container" id="form-hero">
+                <h3>COMECE A LUCRAR AGORA!</h3>
+                <form name="capture-form" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
+                    <input type="hidden" name="form-name" value="capture-form" />
+                    <div class="form-group">
+                        <label for="name-hero">Seu Nome</label>
+                        <input type="text" id="name-hero" name="name" required placeholder="Ex: Ana Criadora">
+                    </div>
+                    <div class="form-group">
+                        <label for="email-hero">Seu Melhor Email</label>
+                        <input type="email" id="email-hero" name="email" required placeholder="Ex: ana.criadora@email.com">
+                    </div>
+                    <button type="submit" class="form-submit-btn">QUERO MINHA PLANILHA GRÁTIS!</button>
+                </form>
+                <div class="form-disclaimer">É 100% gratuito. Prometemos não enviar spam.</div>
             </div>
-            <button type="submit" class="form-submit-btn">QUERO MINHA PLANILHA GRÁTIS!</button>
-        </form>
-        <div class="form-disclaimer">É 100% gratuito. Prometemos não enviar spam.</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <img src="mockup-planilha.png" alt="Mockup da Calculadora de Preço Inteligente da LogiNexo" class="hero-mockup">
     </div>
 
-    <!-- ... (Resto da página, incluindo o segundo formulário, que deve seguir o mesmo padrão acima) ... -->
-    
+    <!-- SEÇÃO 2: O ESPELHO (CONEXÃO COM A DOR) -->
+    <section id="pain-mirror">
+        <div class="container">
+            <h2>Se você se identifica com isso... <span>você está no lugar certo.</span></h2>
+            <div class="pain-points">
+                <div class="pain-point"><span class="icon">🤔</span><p>Sente que trabalha sem parar, mas o dinheiro <strong>"some"</strong> no fim do mês?</p></div>
+                <div class="pain-point"><span class="icon">😵</span><p>Precifica com base no <strong>"achismo"</strong> ou copiando a concorrência?</p></div>
+                <div class="pain-point"><span class="icon">😨</span><p>Acha que planilhas e sistemas de gestão são <strong>complicados e intimidadores</strong>?</p></div>
+                <div class="pain-point"><span class="icon">📉</span><p>Não tem certeza de qual produto te dá <strong>mais lucro</strong> (ou se algum dá lucro)?</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: A PONTE (APRESENTANDO A SOLUÇÃO) -->
+    <section id="solution-bridge">
+        <div class="container">
+            <h2>A clareza financeira que você precisa, simplificada.</h2>
+            <p style="max-width: 700px; margin: 0 auto; font-size: 1.1em;">A Planilha "Calculadora de Preço Inteligente" é a ferramenta que traduz o "financês" para a sua realidade. Sem jargões, sem fórmulas complexas. Apenas respostas.</p>
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Liste seus Custos</h3>
+                    <p>De forma guiada, você informa seus custos (fixos, variáveis, matéria-prima).</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Monte sua "Receita"</h3>
+                    <p>Cadastre a composição de cada produto. O sistema faz a matemática para você.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Descubra a Mágica</h3>
+                    <p>Veja o preço de venda ideal, sua margem de lucro e o ponto de equilíbrio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: A GALERIA DE TRANSFORMAÇÕES -->
+    <section id="transformation">
+        <div class="container">
+            <h2>Imagine poder, finalmente...</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon">🎯</div>
+                    <h3>Ter 100% de Certeza</h3>
+                    <p>Precificar seu trabalho com total confiança, sabendo que cada venda constrói seu sonho, não apenas paga as contas.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">💡</div>
+                    <h3>Tomar Decisões de CEO</h3>
+                    <p>Saber qual produto impulsionar e qual ajustar, usando dados reais do seu negócio, não intuição.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon">⏳</div>
+                    <h3>Ganhar Paz de Espírito</h3>
+                    <p>Ter a tranquilidade de que suas finanças estão organizadas, te liberando tempo e energia para focar na sua arte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5: O SELO DE CONFIANÇA (SUA AUTORIDADE) -->
+    <section id="authority">
+        <div class="container">
+            <h2>Criado por quem entende de negócios e da sua realidade</h2>
+            <div class="authority-box">
+                <img src="Foto Perfil.png" alt="Fagner Oliveira" class="profile-pic">
+                <div class="authority-text">
+                    <p>Olá! Sou <strong>Fagner Oliveira</strong>, fundador da LogiNexo. Durante meu <strong>MBA em Gestão de Negócios na USP/ESALQ</strong>, percebi que as ferramentas mais poderosas do mercado eram complexas demais para quem realmente constrói a economia: você, o microempreendedor.</p>
+                    <p>Criei esta planilha como o primeiro passo para cumprir minha missão: entregar gestão poderosa, sem complicação, para que seu talento criativo tenha a base sólida que merece.</p>
+                    <img src="logo-usp.png" alt="MBA USP/ESALQ" class="logo-usp">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6: O CONVITE FINAL -->
+    <section id="final-invitation">
+        <div class="container">
+            <h2>Troque o "achismo" pela certeza. O primeiro passo é grátis.</h2>
+            <div class="form-container" id="form-final">
+                 <h3>BAIXE SUA PLANILHA AGORA!</h3>
+                 <form name="capture-form-final" method="POST" data-netlify="true" class="capture-form" action="/obrigado.html">
+                     <input type="hidden" name="form-name" value="capture-form-final" />
+                     <div class="form-group">
+                         <label for="name-final">Seu Nome</label>
+                         <input type="text" id="name-final" name="name" required>
+                     </div>
+                     <div class="form-group">
+                         <label for="email-final">Seu Melhor Email</label>
+                         <input type="email" id="email-final" name="email" required>
+                     </div>
+                     <button type="submit" class="form-submit-btn">QUERO MINHA CLAREZA FINANCEIRA!</button>
+                 </form>
+                 <div class="thank-you-message"><h3>🎉 Perfeito! Sua planilha está a caminho do seu e-mail.</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LogiNexo - Gestão poderosa, sem complicação. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT FINAL E CORRIGIDO -->
     <script>
-    // Script Removido Temporariamente para o teste
+    document.addEventListener('DOMContentLoaded', function() {
+        const forms = document.querySelectorAll('form[data-netlify="true"]');
+
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                // Impede o envio padrão para tomarmos controle
+                e.preventDefault();
+
+                // Verifica a validação do HTML5
+                if (!form.checkValidity()) {
+                    e.stopPropagation();
+                    // O próprio navegador mostrará os avisos de campos obrigatórios
+                    return;
+                }
+
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.innerHTML = "Processando...";
+                submitButton.disabled = true;
+
+                const formData = new FormData(form);
+
+                // Envia os dados para o endpoint que a Netlify cria na página atual.
+                fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Apenas em caso de sucesso no envio para a Netlify...
+                        // 1. Dispara o evento para o GTM.
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({'event': 'generate_lead'});
+                        
+                        // 2. Redireciona o usuário para a página de obrigado.
+                        window.location.href = form.getAttribute('action');
+                    } else {
+                        // Se a Netlify retornar um erro (ex: 404), ele será capturado aqui.
+                        throw new Error('Falha no envio para o servidor Netlify.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro detalhado no envio do formulário:', error);
+                    alert('Ocorreu um erro. Por favor, tente novamente.');
+                    
+                    // Restaura o botão em caso de erro
+                    submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                });
+            });
+        });
+    });
     </script>
 </body>
 </html>

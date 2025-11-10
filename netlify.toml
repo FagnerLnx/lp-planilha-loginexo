@@ -4,6 +4,8 @@
 [build]
   # Nenhuma configuração de build necessária para sites estáticos
 
+# Esta seção desativa o processamento automático de assets pela Netlify.
+# É a melhor prática para sites estáticos simples, pois evita comportamentos inesperados.
 [build.processing]
   skip_processing = true
 
@@ -16,7 +18,9 @@
   minify = false
 
 [build.processing.html]
-  pretty_urls = false # <<< A CORREÇÃO ESTÁ AQUI
+  # Desativa as "Pretty URLs", o que resolve conflitos de redirecionamento.
+  # Agora, o action="/obrigado.html" funcionará exatamente como esperado.
+  pretty_urls = false
 
 [build.processing.images]
   compress = false
