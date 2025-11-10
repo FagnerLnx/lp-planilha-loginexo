@@ -226,24 +226,44 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const forms = document.querySelectorAll('form[data-netlify="true"].capture-form');
-        
-        forms.forEach(form => {
-            form.addEventListener('submit', function(e) {
-                if (form.checkValidity()) {
-                    window.dataLayer = window.dataLayer || [];
-                    window.dataLayer.push({'event': 'generate_lead'}); 
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('form[data-netlify="true"]');
 
-                    const submitButton = form.querySelector('.form-submit-btn');
-                    if (submitButton) {
-                        submitButton.innerHTML = "Processando...";
-                        submitButton.disabled = true;
-                    }
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o envio padrão do navegador
+
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = "Processando...";
+            submitButton.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch(form.getAttribute('action'), {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Dispara o evento para o GTM APENAS em caso de sucesso
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({'event': 'generate_lead'});
+                    
+                    // Redireciona para a página de obrigado via JavaScript
+                    window.location.href = form.getAttribute('action');
+                } else {
+                    throw new Error('O envio para a Netlify falhou.');
                 }
+            })
+            .catch(error => {
+                console.error('Erro no envio do formulário:', error);
+                alert('Ocorreu um erro. Por favor, tente novamente.');
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
             });
         });
     });
-    </script>
-</body>
-</html>
+});
+</script>
