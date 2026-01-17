@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Páginas importantes para SEO
+Allow: /index.html
+Allow: /obrigado.html
+Allow: /saas.html
+
+# Evitar indexar páginas administrativas
+Disallow: /politica-de-privacidade.html
+
+# Sitemap
+Sitemap: https://planilha.loginexo.com.br/sitemap.xml
