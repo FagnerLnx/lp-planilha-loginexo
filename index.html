@@ -11,19 +11,23 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Preço Inteligente - Descubra se Você Está Perdendo Dinheiro</title>
+    <title>Planilha Grátis de Precificação para Confeiteiras | LogiNexo</title>
+    <meta name="description" content="Descubra se você está perdendo dinheiro nas suas receitas. Planilha grátis que calcula o preço certo dos seus bolos, doces e marmitas em 5 minutos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        :root{
-            --azul-principal:#214e86;
-            --azul-escuro:#1a233a;
-            --verde-destaque:#00c48c;
-            --cinza-claro:#f5f5f5;
-            --branco:#fff;
-            --texto-cor:#3c424c;
-            --vermelho-alerta:#e74c3c;
+        :root {
+            --azul-principal: #214e86;
+            --azul-escuro: #1a233a;
+            --verde-destaque: #00c48c;
+            --verde-hover: #00a978;
+            --cinza-claro: #f5f5f5;
+            --branco: #fff;
+            --texto-cor: #3c424c;
+            --vermelho-alerta: #e74c3c;
+            --amarelo: #ffc107;
         }
         
         * {
@@ -32,44 +36,69 @@
             box-sizing: border-box;
         }
         
-        body{
-            font-family:'Poppins',sans-serif;
-            background-color:var(--branco);
-            color:var(--texto-cor);
-            line-height:1.6;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--branco);
+            color: var(--texto-cor);
+            line-height: 1.6;
             scroll-behavior: smooth;
         }
         
-        .container{
-            max-width:1100px;
-            margin:0 auto;
-            padding:20px;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
-        section{
-            padding:80px 20px;
+        section {
+            padding: 80px 20px;
             text-align: center;
         }
         
-        h2{
-            font-size:2.5em;
-            font-weight:700;
-            color:var(--azul-escuro);
-            margin-bottom:20px;
+        h2 {
+            font-size: 2.3em;
+            font-weight: 700;
+            color: var(--azul-escuro);
+            margin-bottom: 20px;
             line-height: 1.3;
         }
         
-        h3{
-            font-size:1.3em;
-            color:var(--azul-escuro);
-            margin-top:15px;
+        h3 {
+            font-size: 1.3em;
+            color: var(--azul-escuro);
+            margin-top: 15px;
         }
 
-        /* HERO SECTION */
-        #hero{
+        /* ========================================
+           BARRA DE URGÊNCIA NO TOPO
+           ======================================== */
+        .urgency-bar {
+            background: linear-gradient(90deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .urgency-bar span {
+            background: white;
+            color: #ee5a5a;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-left: 10px;
+            font-size: 0.9em;
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        #hero {
             background: linear-gradient(135deg, var(--azul-escuro) 0%, #2c3e50 100%);
-            color:var(--branco);
-            padding: 80px 20px 120px 20px;
+            color: var(--branco);
+            padding: 60px 20px 120px 20px;
             text-align: left;
             position: relative;
             overflow: hidden;
@@ -86,391 +115,769 @@
             border-radius: 50%;
         }
 
-        .hero-container{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            gap:50px;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 196, 140, 0.2);
+            border: 1px solid var(--verde-destaque);
+            color: var(--verde-destaque);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
             position: relative;
             z-index: 2;
         }
 
-        .hero-content{
-            flex-basis:55%;
+        .hero-content {
+            flex-basis: 55%;
         }
 
-        .hero-content h1{
-            font-size:3em;
-            font-weight:900;
-            margin:0 0 20px 0;
-            line-height:1.2;
+        .hero-content h1 {
+            font-size: 2.8em;
+            font-weight: 900;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
         }
 
-        .hero-content h1 span{
-            color:var(--verde-destaque);
-            display:block;
+        .hero-content h1 .highlight {
+            color: var(--verde-destaque);
+        }
+
+        .hero-content .subheadline {
+            font-size: 1.25em;
+            max-width: 520px;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .hero-bullets {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .hero-bullets li {
+            padding: 8px 0;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-bullets li::before {
+            content: '✓';
+            background: var(--verde-destaque);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 0.8em;
-            margin-top: 10px;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
-        .hero-content .subheadline{
-            font-size:1.3em;
-            max-width:500px;
-            margin-bottom:30px;
-            opacity: 0.9;
-        }
-
-        .form-container{
-            flex-basis:40%;
-            max-width:450px;
-            background:var(--branco);
-            padding:30px;
-            border-radius:20px;
-            color:var(--texto-cor);
-            box-shadow:0 20px 50px rgba(0,0,0,.3);
+        /* FORMULÁRIO */
+        .form-container {
+            flex-basis: 42%;
+            max-width: 420px;
+            background: var(--branco);
+            padding: 35px 30px;
+            border-radius: 20px;
+            color: var(--texto-cor);
+            box-shadow: 0 20px 50px rgba(0,0,0,.3);
             position: relative;
             z-index: 3;
         }
 
-        .form-container h3{
-            margin-top:0;
-            text-align:center;
-            color:var(--azul-principal);
-            font-size: 1.4em;
+        .form-container::before {
+            content: "GRÁTIS";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--verde-destaque);
+            color: white;
+            padding: 6px 25px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 196, 140, 0.4);
         }
 
-        .form-group{
-            margin-bottom:15px;
-            text-align:left;
+        .form-container h3 {
+            margin: 10px 0 5px 0;
+            text-align: center;
+            color: var(--azul-escuro);
+            font-size: 1.3em;
+            line-height: 1.3;
         }
 
-        .form-group label{
-            display:block;
-            margin-bottom:8px;
-            font-weight:600;
+        .form-container .form-subtitle {
+            text-align: center;
+            color: #666;
             font-size: 0.9em;
+            margin-bottom: 20px;
         }
 
-        .form-group input{
-            width:100%;
-            padding:15px;
-            border:2px solid #ddd;
-            border-radius:10px;
-            font-size:1em;
-            font-family:'Poppins',sans-serif;
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9em;
+            color: var(--azul-escuro);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
             transition: all 0.3s ease;
         }
 
-        .form-group input:focus{
-            border-color:var(--verde-destaque);
-            outline:none;
-            box-shadow: 0 0 0 3px rgba(0,196,140,0.1);
+        .form-group input:focus {
+            border-color: var(--verde-destaque);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,196,140,0.15);
         }
 
-        .form-submit-btn{
-            width:100%;
-            padding:18px;
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            padding: 16px;
             background: linear-gradient(135deg, var(--verde-destaque) 0%, #00a878 100%);
-            color:#fff;
-            border:none;
-            border-radius:50px;
-            font-size:1.2em;
-            font-weight:700;
-            cursor:pointer;
-            transition:transform .3s, box-shadow .3s;
-            box-shadow:0 6px 20px rgba(0,196,140,.4);
-            margin-top: 10px;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform .3s, box-shadow .3s;
+            box-shadow: 0 6px 20px rgba(0,196,140,.4);
+            margin-top: 5px;
         }
 
-        .form-submit-btn:hover{
+        .form-submit-btn:hover {
             transform: translateY(-3px);
-            box-shadow:0 10px 25px rgba(0,196,140,.6);
+            box-shadow: 0 10px 25px rgba(0,196,140,.5);
         }
 
-        .microcopy{
-            font-size: .9em;
-            color: #666;
+        .form-submit-btn .btn-icon {
+            margin-right: 8px;
+        }
+
+        .microcopy {
+            font-size: 0.85em;
+            color: #888;
             text-align: center;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .microcopy::before {
-            content: '✓';
-            color: var(--verde-destaque);
-            font-weight: bold;
-        }
-
-        .hero-mockup{
-            max-width:45%;
-            margin-top:-100px;
-            position:relative;
-            z-index:10;
-            filter:drop-shadow(0 15px 40px rgba(0,0,0,.2));
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-
-        /* PAIN MIRROR SECTION */
-        #pain-mirror{
-            background-color:var(--cinza-claro);
-            padding: 100px 20px;
-        }
-
-        #pain-mirror h2{
-            margin-bottom: 40px;
-        }
-
-        .pain-points{
-            max-width:800px;
-            margin:50px auto 0 auto;
-            text-align:left;
-            display:flex;
-            flex-direction:column;
-            gap:20px;
-        }
-
-        .pain-point{
-            display:flex;
-            align-items:center;
-            gap:20px;
-            background-color:var(--branco);
-            padding:25px;
-            border-radius:15px;
-            box-shadow:0 5px 20px rgba(0,0,0,.08);
-            transition: transform 0.3s ease;
-        }
-
-        .pain-point:hover{
-            transform: translateY(-5px);
-        }
-
-        .pain-point .icon{
-            font-size:2em;
-            flex-shrink: 0;
-        }
-
-        .pain-point p{
-            margin:0;
-            font-size:1.1em;
-            font-weight:600;
-            color:var(--azul-principal);
-        }
-
-        /* SOLUTION SECTION */
-        #solution{
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--branco);
-        }
-
-        #solution h2{
-            color: var(--branco);
-            margin-bottom: 30px;
-        }
-
-        #solution .subtitle{
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto 60px auto;
-            opacity: 0.9;
-        }
-
-        .benefits-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:30px;
-            max-width:1000px;
-            margin:0 auto;
-        }
-
-        .benefit-card{
-            background:rgba(255,255,255,.15);
-            padding:40px 30px;
-            border-radius:20px;
-            backdrop-filter:blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-card:hover{
-            transform: translateY(-10px);
-        }
-
-        .benefit-card .icon{
-            font-size:3em;
-            margin-bottom:20px;
-            display: block;
-        }
-
-        .benefit-card h3{
-            color: var(--branco);
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-
-        .benefit-card p{
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* AUTHORITY SECTION */
-        .authority-box{
-            max-width:800px;
-            margin:60px auto 0 auto;
-            background:var(--cinza-claro);
-            padding:50px;
-            border-radius:25px;
-            display:flex;
-            align-items:center;
-            gap:40px;
-            text-align:left;
-            box-shadow: 0 10px 30px rgba(0,0,0,.1);
-        }
-
-        .authority-box img.profile-pic{
-            width:150px;
-            height:150px;
-            border-radius:50%;
-            object-fit: cover;
-            border: 5px solid var(--branco);
-            box-shadow: 0 5px 15px rgba(0,0,0,.1);
-        }
-
-        .authority-box img.logo-usp{
-            max-width: 120px;
             margin-top: 15px;
         }
 
-        .authority-text p{
-            margin:0 0 15px 0;
+        .microcopy-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 8px;
+        }
+
+        .microcopy-item::before {
+            content: '🔒';
+            font-size: 0.9em;
+        }
+
+        .microcopy-item:last-child::before {
+            content: '⚡';
+        }
+
+        /* MOCKUP */
+        .hero-mockup {
+            max-width: 50%;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+            filter: drop-shadow(0 15px 40px rgba(0,0,0,.25));
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        /* ========================================
+           PROVA SOCIAL RÁPIDA
+           ======================================== */
+        .social-proof-bar {
+            background: #f8f9fa;
+            padding: 25px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .social-proof-bar .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .proof-item {
+            text-align: center;
+        }
+
+        .proof-item .number {
+            font-size: 2em;
+            font-weight: 900;
+            color: var(--azul-escuro);
+            display: block;
+        }
+
+        .proof-item .label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* ========================================
+           SEÇÃO PROBLEMA
+           ======================================== */
+        #pain-mirror {
+            background-color: var(--branco);
+            padding: 80px 20px;
+        }
+
+        #pain-mirror h2 {
+            margin-bottom: 15px;
+        }
+
+        #pain-mirror .section-subtitle {
             font-size: 1.1em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
         }
 
-        .authority-text p strong{
-            color:var(--azul-escuro);
+        .pain-points {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        /* FINAL INVITATION */
-        #final-invitation {
+        .pain-point {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+            padding: 22px 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--vermelho-alerta);
+            transition: transform 0.3s ease;
+        }
+
+        .pain-point:hover {
+            transform: translateX(5px);
+        }
+
+        .pain-point .icon {
+            font-size: 1.8em;
+            flex-shrink: 0;
+        }
+
+        .pain-point .text {
+            flex: 1;
+        }
+
+        .pain-point .text strong {
+            display: block;
+            font-size: 1.05em;
+            color: var(--azul-escuro);
+            margin-bottom: 3px;
+        }
+
+        .pain-point .text span {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .pain-cta {
+            margin-top: 40px;
+        }
+
+        .pain-cta p {
+            font-size: 1.15em;
+            color: var(--azul-escuro);
+            font-weight: 600;
+        }
+
+        .pain-cta p span {
+            color: var(--verde-destaque);
+        }
+
+        /* ========================================
+           SEÇÃO SOLUÇÃO / O QUE VOCÊ RECEBE
+           ======================================== */
+        #solution {
+            background: linear-gradient(135deg, var(--azul-principal) 0%, var(--azul-escuro) 100%);
+            color: var(--branco);
+            padding: 80px 20px;
+        }
+
+        #solution h2 {
+            color: var(--branco);
+            margin-bottom: 15px;
+        }
+
+        #solution .section-subtitle {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+            opacity: 0.9;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.1);
+            padding: 35px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: transform 0.3s ease, background 0.3s ease;
+            text-align: left;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .benefit-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            color: var(--branco);
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        .benefit-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        /* ========================================
+           SEÇÃO COMO FUNCIONA
+           ======================================== */
+        #how-it-works {
+            background: var(--cinza-claro);
+            padding: 80px 20px;
+        }
+
+        #how-it-works h2 {
+            margin-bottom: 50px;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 280px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--verde-destaque) 0%, #00a878 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 8px 25px rgba(0, 196, 140, 0.3);
+        }
+
+        .step h4 {
+            font-size: 1.1em;
+            color: var(--azul-escuro);
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .step-time {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* ========================================
+           SEÇÃO AUTORIDADE
+           ======================================== */
+        #authority {
+            padding: 80px 20px;
+            background: var(--branco);
+        }
+
+        #authority h2 {
+            margin-bottom: 40px;
+        }
+
+        .authority-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            padding: 45px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            text-align: left;
+            box-shadow: 0 15px 40px rgba(0,0,0,.08);
+            border: 1px solid #eee;
+        }
+
+        .authority-box img.profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--branco);
+            box-shadow: 0 8px 25px rgba(0,0,0,.1);
+            flex-shrink: 0;
+        }
+
+        .authority-text h4 {
+            font-size: 1.3em;
+            color: var(--azul-escuro);
+            margin-bottom: 5px;
+        }
+
+        .authority-text .credential {
+            color: var(--verde-destaque);
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .authority-text p {
+            margin: 0 0 12px 0;
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .authority-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========================================
+           FAQ
+           ======================================== */
+        #faq {
+            background: var(--cinza-claro);
+            padding: 80px 20px;
+        }
+
+        #faq h2 {
+            margin-bottom: 40px;
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background: var(--branco);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,.05);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: 600;
+            color: var(--azul-escuro);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5em;
+            color: var(--verde-destaque);
+            font-weight: 300;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 20px 25px;
+            max-height: 200px;
+        }
+
+        /* ========================================
+           CTA FINAL
+           ======================================== */
+        #final-cta {
             padding: 100px 20px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, var(--verde-destaque) 0%, #00a878 100%);
             color: var(--branco);
         }
 
-        #final-invitation h2{
+        #final-cta h2 {
             color: var(--branco);
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            font-size: 2.5em;
         }
 
-        #final-invitation .form-container {
-            margin: 40px auto 0 auto;
-            box-shadow: 0 20px 50px rgba(0,0,0,.2);
+        #final-cta .section-subtitle {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            opacity: 0.95;
         }
 
-        footer{
-            background-color:var(--azul-escuro);
-            color:var(--cinza-claro);
-            padding:40px 20px;
-            font-size:.9em;
-            text-align:center;
+        #final-cta .form-container {
+            margin: 0 auto;
+            max-width: 450px;
+            box-shadow: 0 25px 60px rgba(0,0,0,.25);
         }
 
-        .thank-you-message, .loading{
-            display:none;
+        #final-cta .form-container::before {
+            background: var(--amarelo);
+            color: var(--azul-escuro);
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width:900px){
-            .hero-container{
-                flex-direction:column;
-                text-align:center;
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background-color: var(--azul-escuro);
+            color: var(--cinza-claro);
+            padding: 40px 20px;
+            font-size: .9em;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--verde-destaque);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            margin: 0 15px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9em;
+        }
+
+        /* ========================================
+           RESPONSIVO
+           ======================================== */
+        @media (max-width: 900px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .hero-content{
-                text-align:center;
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2em;
             }
             
-            .hero-content .subheadline{
-                margin-left:auto;
-                margin-right:auto;
+            .hero-content .subheadline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-bullets {
+                display: inline-block;
+                text-align: left;
             }
             
-            .form-container{
-                margin-top:40px;
+            .form-container {
+                margin-top: 40px;
                 width: 100%;
-                max-width: 500px;
+                max-width: 450px;
             }
             
-            .hero-mockup{
-                margin-top: 60px;
-                max-width: 80%;
+            .hero-mockup {
+                margin-top: 50px;
+                max-width: 85%;
             }
             
-            .authority-box{
-                flex-direction:column;
-                text-align:center;
-                padding: 30px;
+            .authority-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 35px 25px;
             }
-            
-            .benefits-grid{
-                grid-template-columns: 1fr;
-                gap: 20px;
+
+            .social-proof-bar .container {
+                gap: 30px;
+            }
+
+            .steps-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
 
-        @media (max-width:768px){
-            h2{
-                font-size: 2em;
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.9em;
             }
             
-            .hero-content h1{
-                font-size:2.2em;
+            .hero-content h1 {
+                font-size: 1.9em;
             }
             
-            .hero-content .subheadline{
+            .hero-content .subheadline {
                 font-size: 1.1em;
             }
             
-            .form-container{
-                padding:25px;
+            .form-container {
+                padding: 30px 25px;
             }
             
-            .pain-point p{
-                font-size: 1em;
-            }
-            
-            section{
+            section {
                 padding: 60px 20px;
             }
             
-            #hero{
-                padding: 60px 20px 100px 20px;
+            #hero {
+                padding: 50px 20px 100px 20px;
+            }
+
+            .urgency-bar {
+                font-size: 0.85em;
+                padding: 10px 15px;
+            }
+
+            .urgency-bar span {
+                display: block;
+                margin: 8px auto 0 auto;
+            }
+
+            .social-proof-bar .container {
+                gap: 20px;
+            }
+
+            .proof-item .number {
+                font-size: 1.6em;
             }
         }
 
-        @media (max-width:480px){
-            .hero-content h1{
-                font-size:1.8em;
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.65em;
             }
             
-            .form-submit-btn{
-                padding: 15px;
-                font-size: 1.1em;
+            .form-submit-btn {
+                padding: 14px;
+                font-size: 1em;
             }
             
-            .pain-point{
-                padding: 20px;
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
+            .pain-point {
+                padding: 18px 20px;
             }
-            
-            .authority-box{
-                padding: 25px;
+
+            .benefit-card {
+                padding: 25px 20px;
+            }
+
+            #final-cta h2 {
+                font-size: 2em;
+            }
+
+            .hero-badge {
+                font-size: 0.8em;
+                padding: 6px 15px;
             }
         }
     </style>
@@ -481,135 +888,314 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <!-- SEÇÃO 1: HERO - MEDO + ESPECIFICIDADE -->
+    <!-- ========================================
+         BARRA DE URGÊNCIA
+         ======================================== -->
+    <div class="urgency-bar">
+        🎁 Planilha 100% gratuita por tempo limitado <span>+ de 500 downloads</span>
+    </div>
+
+    <!-- ========================================
+         HERO
+         ======================================== -->
     <header id="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Você trabalhou o mês inteiro... <span>mas pagou para trabalhar?</span></h1>
-                <p class="subheadline">Descubra em 7 minutos se seus preços cobrem seus custos reais — ou se você está perdendo dinheiro a cada venda sem perceber.</p>
+                <div class="hero-badge">🎂 Para confeiteiras, doceiras e marmiteiras</div>
+                
+                <h1>
+                    Você sabe se está <span class="highlight">lucrando ou perdendo dinheiro</span> em cada receita?
+                </h1>
+                
+                <p class="subheadline">
+                    Descubra em 5 minutos o preço certo dos seus bolos, doces e marmitas. Sem conta complicada.
+                </p>
+
+                <ul class="hero-bullets">
+                    <li>Calcule o custo real de cada receita</li>
+                    <li>Descubra qual produto dá mais lucro</li>
+                    <li>Pare de copiar preço da concorrência</li>
+                </ul>
             </div>
+
             <div class="form-container" id="form-hero">
-                <h3>Fazer Meu Diagnóstico Grátis</h3>
+                <h3>Baixe a Planilha Grátis</h3>
+                <p class="form-subtitle">Receba no seu email em 1 minuto</p>
+                
                 <form action="https://formsubmit.co/admin@loginexo.com.br" method="POST" class="capture-form">
                     <input type="hidden" name="_next" value="https://planilha.loginexo.com.br/obrigado.html">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_subject" value="Novo Lead! Planilha de Precificação">
 
                     <div class="form-group">
-                        <label for="name-hero">Seu Nome</label>
-                        <input type="text" id="name-hero" name="name" required placeholder="Ex: Ana Criadora">
+                        <label for="name-hero">Seu nome</label>
+                        <input type="text" id="name-hero" name="name" required placeholder="Ex: Maria da Confeitaria">
                     </div>
                     <div class="form-group">
-                        <label for="email-hero">Seu Melhor Email</label>
-                        <input type="email" id="email-hero" name="email" required placeholder="Ex: ana.criadora@email.com">
+                        <label for="email-hero">Seu melhor email</label>
+                        <input type="email" id="email-hero" name="email" required placeholder="Ex: maria@email.com">
                     </div>
-                    <button type="submit" class="form-submit-btn">FAZER MEU DIAGNÓSTICO GRÁTIS!</button>
+                    <button type="submit" class="form-submit-btn">
+                        <span class="btn-icon">📥</span> QUERO MINHA PLANILHA GRÁTIS
+                    </button>
                 </form>
-                <div class="microcopy">100% gratuito • Sem instalar nada • Resultado imediato</div>
+                
+                <div class="microcopy">
+                    <span class="microcopy-item">Seus dados estão seguros</span>
+                    <span class="microcopy-item">Envio imediato</span>
+                </div>
             </div>
         </div>
     </header>
 
+    <!-- MOCKUP DA PLANILHA -->
     <div class="container">
-        <img src="mockup-planilha.png" alt="Mockup da Calculadora de Preço Inteligente da LogiNexo" class="hero-mockup">
+        <img src="mockup-planilha.png" alt="Planilha de Precificação para Confeiteiras - LogiNexo" class="hero-mockup">
     </div>
 
-    <!-- SEÇÃO 2: PROBLEMA - BULLETS COM EMOJIS -->
+    <!-- ========================================
+         PROVA SOCIAL
+         ======================================== -->
+    <div class="social-proof-bar">
+        <div class="container">
+            <div class="proof-item">
+                <span class="number">500+</span>
+                <span class="label">Downloads</span>
+            </div>
+            <div class="proof-item">
+                <span class="number">5 min</span>
+                <span class="label">Para calcular</span>
+            </div>
+            <div class="proof-item">
+                <span class="number">100%</span>
+                <span class="label">Gratuita</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SEÇÃO PROBLEMA
+         ======================================== -->
     <section id="pain-mirror">
         <div class="container">
-            <h2>Se você se identifica com isso, você está no lugar certo.</h2>
+            <h2>Você se identifica com alguma dessas situações?</h2>
+            <p class="section-subtitle">Se qualquer uma parece familiar, você não está sozinha.</p>
+
             <div class="pain-points">
                 <div class="pain-point">
                     <span class="icon">😰</span>
-                    <p>Vende muito, mas o dinheiro "some" no fim do mês?</p>
+                    <div class="text">
+                        <strong>Vende bastante, mas o dinheiro "some"</strong>
+                        <span>Trabalha o mês todo e quando vai ver... cadê o lucro?</span>
+                    </div>
                 </div>
                 <div class="pain-point">
                     <span class="icon">🎲</span>
-                    <p>Copia o preço da concorrência sem saber se dá lucro?</p>
+                    <div class="text">
+                        <strong>Copia preço da concorrência no achismo</strong>
+                        <span>Sem saber se o preço dela cobre os custos dela, quanto mais os seus.</span>
+                    </div>
                 </div>
                 <div class="pain-point">
                     <span class="icon">😵</span>
-                    <p>Esquece de incluir custos (embalagem, energia, taxas) no cálculo?</p>
+                    <div class="text">
+                        <strong>Esquece custos escondidos no cálculo</strong>
+                        <span>Embalagem, gás, energia, taxinha do cartão... tudo isso come seu lucro.</span>
+                    </div>
                 </div>
                 <div class="pain-point">
                     <span class="icon">🤔</span>
-                    <p>Não sabe qual produto está te dando prejuízo disfarçado?</p>
+                    <div class="text">
+                        <strong>Não sabe qual produto dá prejuízo disfarçado</strong>
+                        <span>Aquele bolo que "vende bem" pode estar te fazendo perder dinheiro.</span>
+                    </div>
                 </div>
+            </div>
+
+            <div class="pain-cta">
+                <p>Se você pensou "sou eu"... <span>essa planilha foi feita pra você.</span></p>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 3: SOLUÇÃO - BENEFÍCIOS CLAROS -->
+    <!-- ========================================
+         O QUE VOCÊ RECEBE
+         ======================================== -->
     <section id="solution">
         <div class="container">
-            <h2>A clareza que você precisa. Sem planilha complicada.</h2>
-            <p class="subtitle">A Calculadora de Preço Inteligente traduz o "financês" para a sua realidade. Você responde perguntas simples, ela faz a matemática.</p>
-            
+            <h2>O que você vai descobrir com a planilha</h2>
+            <p class="section-subtitle">Em 5 minutos você terá clareza que nunca teve sobre seus preços.</p>
+
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <span class="icon">🎯</span>
-                    <h3>Certeza no Lugar do Achismo</h3>
-                    <p>Saiba exatamente quanto cada produto precisa custar para você ter lucro real — não ilusão de lucro.</p>
+                    <h3>O preço mínimo de cada receita</h3>
+                    <p>Saiba exatamente quanto precisa cobrar para não ter prejuízo. Acabou o achismo.</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="icon">💡</span>
-                    <h3>Proteção Contra Prejuízo Invisível</h3>
-                    <p>Descubra os custos escondidos que estão comendo sua margem (e que você nem sabia que existiam).</p>
+                    <span class="icon">💰</span>
+                    <h3>Quanto você lucra em cada produto</h3>
+                    <p>Descubra quais receitas valem a pena e quais só dão trabalho (e prejuízo).</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="icon">⏳</span>
-                    <h3>Decisões de CEO em 7 Minutos</h3>
-                    <p>Veja qual produto impulsionar, qual ajustar, e onde você está "pagando para trabalhar".</p>
+                    <span class="icon">📊</span>
+                    <h3>Os custos que você esquecia</h3>
+                    <p>Embalagem, gás, energia, seu tempo... a planilha inclui tudo no cálculo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 4: AUTORIDADE -->
+    <!-- ========================================
+         COMO FUNCIONA
+         ======================================== -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2>Como funciona? Simples assim:</h2>
+
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Baixe a planilha</h4>
+                    <p>Chega no seu email em 1 minuto. Abre no celular ou computador.</p>
+                    <span class="step-time">⚡ Instantâneo</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Preencha sua receita</h4>
+                    <p>Coloque os ingredientes e quantidades. A planilha guia você.</p>
+                    <span class="step-time">⏱️ 5 minutinhos</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Veja o preço certo</h4>
+                    <p>A planilha calcula automaticamente quanto você precisa cobrar.</p>
+                    <span class="step-time">🎯 Resultado na hora</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         AUTORIDADE
+         ======================================== -->
     <section id="authority">
         <div class="container">
-            <h2>Criado por quem entende de negócios e da sua realidade</h2>
+            <h2>Quem criou essa planilha?</h2>
+            
             <div class="authority-box">
-                <img src="Foto Perfil.png" alt="Fagner Oliveira" class="profile-pic">
+                <img src="Foto Perfil.png" alt="Fagner Oliveira - Criador do LogiNexo" class="profile-pic">
                 <div class="authority-text">
-                    <p>Olá! Sou <strong>Fagner Oliveira</strong>, fundador da LogiNexo. Durante meu <strong>MBA em Gestão de Negócios na USP/ESALQ</strong>, percebi que as ferramentas mais poderosas do mercado eram complexas demais para quem realmente constrói a economia: você, o microempreendedor.</p>
-                    <p>Criei esta planilha como o primeiro passo para cumprir minha missão: entregar gestão poderosa, sem complicação, para que seu talento criativo tenha a base sólida que merece.</p>
+                    <h4>Fagner Oliveira</h4>
+                    <span class="credential">MBA em Gestão de Negócios - USP/ESALQ</span>
+                    <p>Percebi que as ferramentas de gestão do mercado eram complicadas demais para quem realmente constrói a economia: <strong>você, microempreendedora.</strong></p>
+                    <p>Criei essa planilha como o primeiro passo para te ajudar a ter <strong>clareza sobre seus números</strong>, sem precisar ser expert em finanças.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 5: CHAMADA FINAL -->
-    <section id="final-invitation">
+    <!-- ========================================
+         FAQ
+         ======================================== -->
+    <section id="faq">
         <div class="container">
-            <h2>Troque o "achismo" pela certeza. O primeiro passo é grátis.</h2>
+            <h2>Dúvidas frequentes</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">A planilha é realmente grátis?</div>
+                    <div class="faq-answer">Sim, 100% gratuita! Você só precisa informar seu email para receber o link de download.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Funciona no celular?</div>
+                    <div class="faq-answer">Sim! Você pode usar no celular pelo Google Planilhas ou no computador pelo Excel. Enviamos instruções junto com a planilha.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Preciso entender de Excel?</div>
+                    <div class="faq-answer">Não! A planilha é super simples. Você só preenche os campos marcados e ela faz toda a conta automaticamente.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Serve para qualquer tipo de comida?</div>
+                    <div class="faq-answer">Sim! Funciona para bolos, doces, brigadeiros, marmitas, salgados, pães... qualquer receita que você vende.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Vou receber spam?</div>
+                    <div class="faq-answer">Não enviamos spam. Você receberá apenas a planilha e dicas úteis sobre precificação. Pode cancelar quando quiser.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CTA FINAL
+         ======================================== -->
+    <section id="final-cta">
+        <div class="container">
+            <h2>Pare de adivinhar. Comece a lucrar.</h2>
+            <p class="section-subtitle">Baixe agora a planilha gratuita e descubra em 5 minutos se você está cobrando certo.</p>
+
             <div class="form-container" id="form-final">
-                <h3>BAIXE SUA PLANILHA AGORA!</h3>
+                <h3>Quero Minha Planilha Grátis!</h3>
+                <p class="form-subtitle">Receba no seu email agora mesmo</p>
+                
                 <form action="https://formsubmit.co/admin@loginexo.com.br" method="POST" class="capture-form">
                     <input type="hidden" name="_next" value="https://planilha.loginexo.com.br/obrigado.html">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="Novo Lead! Planilha de Precificação (Rodapé)">
+                    <input type="hidden" name="_subject" value="Novo Lead! Planilha (Rodapé)">
 
                     <div class="form-group">
-                        <label for="name-final">Seu Nome</label>
-                        <input type="text" id="name-final" name="name" required placeholder="Ex: Ana Criadora">
+                        <label for="name-final">Seu nome</label>
+                        <input type="text" id="name-final" name="name" required placeholder="Ex: Maria da Confeitaria">
                     </div>
                     <div class="form-group">
-                        <label for="email-final">Seu Melhor Email</label>
-                        <input type="email" id="email-final" name="email" required placeholder="Ex: ana.criadora@email.com">
+                        <label for="email-final">Seu melhor email</label>
+                        <input type="email" id="email-final" name="email" required placeholder="Ex: maria@email.com">
                     </div>
-                    <button type="submit" class="form-submit-btn">QUERO MINHA CLAREZA FINANCEIRA!</button>
+                    <button type="submit" class="form-submit-btn">
+                        <span class="btn-icon">📥</span> BAIXAR PLANILHA GRÁTIS
+                    </button>
                 </form>
-                <div class="microcopy">100% gratuito • Sem instalar nada • Resultado imediato</div>
-                <div class="thank-you-message"><h3>🎉 Perfeito! Sua planilha está a caminho do seu e-mail.</h3></div>
+                
+                <div class="microcopy">
+                    <span class="microcopy-item">Seus dados estão seguros</span>
+                    <span class="microcopy-item">Envio imediato</span>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 LogiNexo - Gestão poderosa, sem complicação. Todos os direitos reservados.</p>
+            <p>&copy; 2025 <a href="https://loginexo.com.br" target="_blank">LogiNexo</a> - Gestão poderosa, sem complicação.</p>
+            <div class="footer-links">
+                <a href="https://loginexo.com.br/politica_privacidade.html">Política de Privacidade</a>
+                <a href="https://loginexo.com.br/termos_de_uso.html">Termos de Uso</a>
+            </div>
         </div>
     </footer>
+
+    <!-- ========================================
+         SCRIPT FAQ ACCORDION
+         ======================================== -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Fecha todos
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Abre o clicado (se não estava aberto)
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
